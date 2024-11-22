@@ -5,15 +5,13 @@
 #      ___/ / /_/ /  /  __/ /_/ / / / / / / / / / / /_/ /   ___/ /  __/ /   | |/ /  __/ /    
 #     /____/\__/_/   \___/\__,_/_/ /_/ /_/_/_/ /_/\__, /   /____/\___/_/    |___/\___/_/     
 #                                                /____/                                      
-#   Need  "ronix-net" Network for Run this File
-#   docker network create --driver bridge --subnet=150.50.50.0/24 ronix-net
-
-
+#   Need  "my-net" Network for Run this File
+#   docker network create --driver bridge --subnet=150.50.50.0/24 my-net
 version: "3.3"
 services:
   kaltura:
     container_name: 'kaltura'
-    image: dockerhub.ronix.ir/nginx-vod-module:latest
+    image: ghcr.io/beigi-reza/nginx-vod-module:latest
     hostname: kaltura
     ports:
       - 8800:80
@@ -23,11 +21,11 @@ services:
       - ./config/nginx.conf:/usr/local/nginx/conf/nginx.conf
       - ./ssl:/etc/nginx/ssl:ro
     networks:
-      - ronix-net
+      - my-net
     restart: always
 
 networks:
-  ronix-net:
+  my-net:
     external: true
 
 
