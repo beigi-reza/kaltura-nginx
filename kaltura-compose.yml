@@ -14,8 +14,8 @@ services:
     image: ghcr.io/beigi-reza/nginx-vod-module:latest
     hostname: kaltura
     ports:
-      - 8800:80
-      - 8443:443
+      - 80:80
+      - 443:443
     volumes:
       - /videoFiles/videos:/opt/static/videos
       - ./config/nginx.conf:/usr/local/nginx/conf/nginx.conf
